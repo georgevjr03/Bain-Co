@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>George Varughese Kaimoottil — Primary Research</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --red: #9B1D20;
+    --red-light: #c0272b;
+    --dark: #111111;
+    --mid: #444444;
+    --muted: #888888;
+    --rule: #E0E0E0;
+    --bg: #FFFFFF;
+    --bg-off: #F8F8F6;
+    --serif: 'Libre Baskerville', Georgia, serif;
+    --sans: 'Inter', system-ui, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--mid);
+    background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(255,255,255,0.96);
+    border-bottom: 1px solid var(--rule);
+    backdrop-filter: blur(8px);
+    padding: 0 48px;
+    height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-logo {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    color: var(--dark);
+    text-transform: uppercase;
+  }
+  .nav-logo span { color: var(--red); }
+  .nav-links { display: flex; gap: 36px; }
+  .nav-links a {
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    color: var(--muted); text-decoration: none; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    padding: 140px 48px 100px;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 420px; gap: 80px; align-items: start;
+  }
+  .hero-eyebrow {
+    font-family: var(--sans); font-size: 12px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase; color: var(--red);
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 40px; height: 1px; background: var(--red); }
+  h1 {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 54px);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 28px;
+    letter-spacing: -0.01em;
+  }
+  h1 em { font-style: italic; color: var(--red); }
+  .hero-sub {
+    font-size: 17px; line-height: 1.75; color: var(--mid);
+    max-width: 560px; margin-bottom: 40px;
+  }
+  .hero-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--red); color: white;
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none;
+    transition: background 0.2s;
+  }
+  .hero-cta:hover { background: var(--red-light); }
+  .hero-cta-ghost {
+    display: inline-flex; align-items: center; gap: 10px;
+    border: 1px solid var(--dark); color: var(--dark);
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    padding: 14px 28px; text-decoration: none; margin-left: 16px;
+    transition: all 0.2s;
+  }
+  .hero-cta-ghost:hover { background: var(--dark); color: white; }
+
+  .hero-card {
+    background: var(--bg-off);
+    border-top: 3px solid var(--red);
+    padding: 36px;
+  }
+  .hero-card-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 20px;
+  }
+  .stat-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    margin-bottom: 28px;
+  }
+  .stat { border-left: 2px solid var(--red); padding-left: 14px; }
+  .stat-number {
+    font-family: var(--serif); font-size: 30px; font-weight: 700;
+    color: var(--dark); line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; }
+  .programme-list { display: flex; flex-direction: column; gap: 8px; }
+  .programme-item {
+    font-size: 13px; font-weight: 500; color: var(--dark);
+    padding: 8px 12px; background: white;
+    border-left: 2px solid var(--rule);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .programme-item::before { content: '→'; color: var(--red); font-size: 12px; }
+
+  /* SECTIONS */
+  section { padding: 80px 48px; }
+  section:nth-child(even) { background: var(--bg-off); }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 11px; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--red);
+    display: flex; align-items: center; gap: 12px; margin-bottom: 40px;
+  }
+  .section-label::after { content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--red); }
+  h2 {
+    font-family: var(--serif); font-size: clamp(26px, 3vw, 36px);
+    font-weight: 700; color: var(--dark); line-height: 1.2;
+    margin-bottom: 16px; letter-spacing: -0.01em;
+  }
+  .section-intro { font-size: 17px; color: var(--mid); max-width: 680px; margin-bottom: 48px; }
+
+  /* RESEARCH WORK */
+  .work-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+  .work-item {
+    background: white; padding: 40px;
+    border-top: 3px solid transparent;
+    transition: border-color 0.2s;
+  }
+  .work-item:hover { border-top-color: var(--red); }
+  .work-item.featured { border-top-color: var(--red); }
+  .work-tag {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--red); margin-bottom: 12px;
+  }
+  .work-item h3 {
+    font-family: var(--serif); font-size: 20px; font-weight: 700;
+    color: var(--dark); margin-bottom: 12px; line-height: 1.3;
+  }
+  .work-item p { font-size: 14px; color: var(--mid); line-height: 1.7; margin-bottom: 16px; }
+  .work-meta {
+    font-size: 12px; color: var(--muted); font-weight: 500;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .work-meta span { color: var(--red); }
+
+  /* CAPABILITIES */
+  .cap-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .cap-item { }
+  .cap-num {
+    font-family: var(--serif); font-size: 48px; font-weight: 700;
+    color: var(--rule); line-height: 1; margin-bottom: 8px;
+  }
+  .cap-title { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 10px; }
+  .cap-desc { font-size: 14px; color: var(--mid); line-height: 1.7; }
+
+  /* EXPERIENCE TIMELINE */
+  .timeline { display: flex; flex-direction: column; gap: 0; }
+  .timeline-item {
+    display: grid; grid-template-columns: 200px 1fr;
+    gap: 48px; padding: 40px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  .timeline-item:first-child { border-top: 1px solid var(--rule); }
+  .timeline-period { font-size: 12px; font-weight: 500; color: var(--muted); padding-top: 4px; }
+  .timeline-org { font-size: 11px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--red); margin-top: 6px; }
+  .timeline-content h3 {
+    font-family: var(--serif); font-size: 19px; font-weight: 700;
+    color: var(--dark); margin-bottom: 10px;
+  }
+  .timeline-content p { font-size: 14px; color: var(--mid); margin-bottom: 10px; }
+  .achievement-tag {
+    display: inline-block; background: #FBF0F0; color: var(--red);
+    font-size: 12px; font-weight: 600; padding: 4px 10px;
+    margin-top: 4px;
+  }
+
+  /* PROGRAMMES */
+  .prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+  .prog-item {
+    background: white; padding: 36px;
+    border-bottom: 3px solid var(--rule);
+    transition: border-color 0.2s;
+  }
+  .prog-item:hover { border-bottom-color: var(--red); }
+  .prog-org {
+    font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--muted); margin-bottom: 10px;
+  }
+  .prog-item h3 {
+    font-family: var(--serif); font-size: 17px; font-weight: 700;
+    color: var(--dark); margin-bottom: 10px; line-height: 1.3;
+  }
+  .prog-item p { font-size: 13px; color: var(--mid); line-height: 1.6; }
+  .prog-sel {
+    font-size: 11px; font-weight: 600; color: var(--red);
+    margin-top: 14px; letter-spacing: 0.04em;
+  }
+
+  /* WHY BAIN */
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .why-body { font-size: 17px; line-height: 1.8; color: var(--mid); }
+  .why-body p + p { margin-top: 20px; }
+  .why-body strong { color: var(--dark); font-weight: 600; }
+  .why-points { display: flex; flex-direction: column; gap: 0; }
+  .why-point {
+    padding: 24px 0; border-bottom: 1px solid var(--rule);
+    display: flex; gap: 20px; align-items: flex-start;
+  }
+  .why-point:first-child { border-top: 1px solid var(--rule); }
+  .why-arrow { color: var(--red); font-size: 18px; margin-top: 2px; flex-shrink: 0; }
+  .why-point-text h4 { font-size: 15px; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+  .why-point-text p { font-size: 13px; color: var(--mid); }
+
+  /* CONTACT */
+  .contact-row {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 32px;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 8px; }
+  .contact-line {
+    font-size: 14px; color: var(--mid);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .contact-dot { width: 5px; height: 5px; background: var(--red); border-radius: 50%; }
+  .contact-cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+
+  /* FOOTER */
+  footer {
+    padding: 32px 48px; border-top: 1px solid var(--rule);
+    background: var(--dark);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .footer-name {
+    font-family: var(--sans); font-size: 13px; font-weight: 600;
+    letter-spacing: 0.06em; text-transform: uppercase; color: rgba(255,255,255,0.5);
+  }
+  .footer-name strong { color: rgba(255,255,255,0.9); }
+  .footer-note { font-size: 12px; color: rgba(255,255,255,0.35); }
+
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .hero { grid-template-columns: 1fr; padding: 120px 24px 60px; gap: 48px; }
+    section { padding: 60px 24px; }
+    .work-grid, .cap-grid, .prog-grid, .why-grid { grid-template-columns: 1fr; }
+    .timeline-item { grid-template-columns: 1fr; gap: 8px; }
+    .nav-links { display: none; }
+    footer { flex-direction: column; gap: 12px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">George <span>V K</span></div>
+  <div class="nav-links">
+    <a href="#research">Research</a>
+    <a href="#experience">Experience</a>
+    <a href="#programmes">Programmes</a>
+    <a href="#bain">Why Bain</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div>
+    <div class="hero-eyebrow">Primary Researcher · Dubai, UAE</div>
+    <h1>Market intelligence<br>that becomes<br><em>strategic conviction.</em></h1>
+    <p class="hero-sub">
+      Computer Science & Engineering graduate with hands-on primary market research experience — real estate market analysis, consultancy intelligence synthesis, AI-augmented data systems, and structured insight delivery for senior stakeholders across the UAE and GCC.
+    </p>
+    <a href="mailto:georgevjr03@gmail.com" class="hero-cta">Get in touch</a>
+    <a href="#experience" class="hero-cta-ghost">View profile</a>
+  </div>
+  <div>
+    <div class="hero-card">
+      <div class="hero-card-label">At a glance</div>
+      <div class="stat-row">
+        <div class="stat">
+          <div class="stat-number">2+</div>
+          <div class="stat-label">Years analytical experience</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">7×</div>
+          <div class="stat-label">Data quality improvement, sole analyst</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">40%</div>
+          <div class="stat-label">Reporting overhead reduction via automation</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number">MIT</div>
+          <div class="stat-label">US startup, production AI systems</div>
+        </div>
+      </div>
+      <div class="hero-card-label" style="margin-bottom:12px;">Competitive global selections — 2025</div>
+      <div class="programme-list">
+        <div class="programme-item">McKinsey Forward Programme</div>
+        <div class="programme-item">Oxford OxML Summer School</div>
+        <div class="programme-item">HPAIR Harvard Delegate</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RESEARCH WORK -->
+<section id="research">
+  <div class="section-inner">
+    <div class="section-label">Primary research & analytical work</div>
+    <h2>Research projects and market intelligence</h2>
+    <p class="section-intro">Hands-on primary and secondary market research conducted in live commercial environments — not academic exercises.</p>
+    <div class="work-grid">
+      <div class="work-item featured">
+        <div class="work-tag">Featured · UAE Real Estate Research</div>
+        <h3>GCC Market Intelligence — DAMAC Properties Research Team</h3>
+        <p>Conducted structured primary and secondary market research for DAMAC's internal research team. Synthesised intelligence from Knight Frank, JLL, Colliers, and Savills to produce internal strategy reports tracking supply-demand dynamics, pricing indices, and competitive positioning across key Dubai submarkets. Translated multi-source quantitative and qualitative data into strategic narratives for senior stakeholder consumption.</p>
+        <div class="work-meta"><span>Methods:</span> Secondary research · Consultancy synthesis · Data analysis · Strategy reporting</div>
+      </div>
+      <div class="work-item">
+        <div class="work-tag">AI Systems · MIT Startup</div>
+        <h3>AI-Augmented Data Systems — Maura (MIT-Founded)</h3>
+        <p>Built production data collection and processing systems inside a US-headquartered MIT-founded AI startup. Designed AI-augmented analytical workflows and data pipelines under US engineering standards — developing the technical foundation for AI-enabled research design and insight generation that translates directly into modern primary research delivery.</p>
+        <div class="work-meta"><span>Methods:</span> Python · Cloud platforms (AWS, Firebase) · AI workflow design</div>
+      </div>
+      <div class="work-item">
+        <div class="work-tag">Python Automation · UAE Government Client</div>
+        <h3>Research Pipeline Automation — Reach Group</h3>
+        <p>Developed Python-scripted reporting pipelines that reduced manual analytical overhead by 40% for a UAE government enterprise client. Applied the same instinct that makes AI-enabled research valuable: identifying where automation extends analytical capacity, not just accelerates repetitive tasks.</p>
+        <div class="work-meta"><span>Tools:</span> Python · Excel · HR data systems · Automated report generation</div>
+      </div>
+      <div class="work-item">
+        <div class="work-tag">Government Data · Saudi Arabia</div>
+        <h3>HR Data System Remediation — Emdad HR (Saudi Government Client)</h3>
+        <p>Joined as sole analyst responsible for a live government HR data system: 500+ active records, 15% data integrity rate. Delivered a structured data remediation programme — root-cause analysis, record-level correction, validation rules — reducing defect rate to under 2% within six weeks. Zero operational downtime throughout.</p>
+        <div class="work-meta"><span>Outcome:</span> 7× error reduction · Zero downtime · Full SOPs authored</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">Core capabilities</div>
+    <h2>What I bring to primary research</h2>
+    <p class="section-intro">The combination that makes a research associate genuinely valuable at a tier-1 consulting firm.</p>
+    <div class="cap-grid">
+      <div class="cap-item">
+        <div class="cap-num">01</div>
+        <div class="cap-title">Structured research design & synthesis</div>
+        <div class="cap-desc">Designed and executed end-to-end research frameworks at DAMAC — from defining the right approach to synthesising consultancy publications into actionable strategic insights. Rigorous source evaluation and analytical narrative construction.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-num">02</div>
+        <div class="cap-title">AI-enabled analytical workflows</div>
+        <div class="cap-desc">Production-level AI system design at Maura and Python automation at Reach Group. Hands-on experience applying AI tools to accelerate insight generation without sacrificing analytical rigour — the exact capability Bain's AIS team is investing in.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-num">03</div>
+        <div class="cap-title">Quantitative & qualitative methods</div>
+        <div class="cap-desc">Applied both at DAMAC: quantitative analysis of real estate transaction data, pricing indices, and supply-demand metrics alongside qualitative synthesis of consultancy commentary and market intelligence into strategic narratives.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-num">04</div>
+        <div class="cap-title">Data storytelling for senior stakeholders</div>
+        <div class="cap-desc">Prepared internal reports and presentation decks for DAMAC senior leadership; structured analytical reports for government clients at Emdad and Reach Group. Output quality aligned to institutional standards — clear, precise, decision-ready.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-num">05</div>
+        <div class="cap-title">GCC regional market knowledge</div>
+        <div class="cap-desc">Deep working knowledge of UAE and Saudi Arabia market dynamics from research at DAMAC and client delivery across both markets. Understands the GCC context — Vision 2030, UAE diversification, GCC real estate cycles — that shapes Bain's Middle East research mandate.</div>
+      </div>
+      <div class="cap-item">
+        <div class="cap-num">06</div>
+        <div class="cap-title">Learning agility at competitive scale</div>
+        <div class="cap-desc">Admitted to McKinsey Forward Programme, Oxford OxML Summer School, and HPAIR Harvard Delegate — simultaneously, from worldwide candidate pools. Each programme tests the ability to move from zero to high-quality analytical output in unfamiliar domains.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience" style="background: var(--bg-off);">
+  <div class="section-inner">
+    <div class="section-label">Professional experience</div>
+    <h2>Career timeline</h2>
+    <div class="timeline">
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-period">2024</div>
+          <div class="timeline-org">DAMAC Properties</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Market Research Analyst — Real Estate Research Team</h3>
+          <p>Conducted structured primary and secondary market research for DAMAC's internal team. Synthesised publications from Knight Frank, JLL, Colliers, and Savills to produce strategy reports tracking UAE real estate market dynamics. Analysed transaction data, pricing indices, supply-demand metrics, and macro indicators. Prepared internal research reports and presentation decks for senior stakeholders.</p>
+          <span class="achievement-tag">Market intelligence adopted by DAMAC research team · Consultancy-standard analytical outputs</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-period">Jun 2024 – Apr 2025</div>
+          <div class="timeline-org">Maura · MIT-Founded Startup</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Technical Analyst & Data Systems Developer</h3>
+          <p>Built production data infrastructure at a US-headquartered MIT-founded AI startup — schemas, pipelines, validation logic, and system documentation under US engineering standards. Designed AI-augmented analytical workflows; delivered cross-timezone with teams in UAE, Sweden, and USA.</p>
+          <span class="achievement-tag">MIT/US engineering standard · AI-enabled workflow design in live production environment</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-period">May 2025 – Present</div>
+          <div class="timeline-org">Reach Group · Dubai</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Data Analyst & Reporting Specialist</h3>
+          <p>Designs and maintains analytical reports and data pipelines for UAE and Saudi Arabia enterprise clients. Python automation reduced manual reporting overhead by 40% for a UAE government client. Structured reporting outputs for quarterly business reviews presented to client leadership.</p>
+          <span class="achievement-tag">40% reporting overhead reduction via Python automation</span>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div>
+          <div class="timeline-period">Oct 2025 – Present</div>
+          <div class="timeline-org">Emdad HR · Saudi Arabia</div>
+        </div>
+        <div class="timeline-content">
+          <h3>Data Analyst — Saudi Government Client</h3>
+          <p>Sole analyst responsible for a live government HR system: 500+ active records, 15% data integrity rate. Delivered structured data remediation — root-cause analysis, record-level correction, SOPs — achieving under 2% defect rate within six weeks. Zero operational downtime.</p>
+          <span class="achievement-tag">7× defect rate improvement · Sole analyst delivery under pressure</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAMMES -->
+<section id="programmes">
+  <div class="section-inner">
+    <div class="section-label">Global programme selections — 2025</div>
+    <h2>Selected from worldwide candidates<br>on analytical rigour</h2>
+    <p class="section-intro">Three competitive global programmes in the same year — each selecting for the analytical capability, structured problem-solving, and learning agility that primary research at a tier-1 consulting firm demands.</p>
+    <div class="prog-grid">
+      <div class="prog-item">
+        <div class="prog-org">McKinsey & Company</div>
+        <h3>McKinsey Forward Programme</h3>
+        <p>Selective global programme developing advanced structured problem-solving, analytical reasoning, and leadership communication. Selected from worldwide applicants on demonstrated analytical capability.</p>
+        <div class="prog-sel">Selected from worldwide candidates · 2025</div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-org">University of Oxford</div>
+        <h3>OxML Summer School — Machine Learning</h3>
+        <p>Oxford's competitive summer school for machine learning and AI applications. Selected for advanced technical and analytical capability. Directly relevant to Bain's investment in AI-enabled research design and insight generation.</p>
+        <div class="prog-sel">Selected from worldwide candidates · 2025</div>
+      </div>
+      <div class="prog-item">
+        <div class="prog-org">Harvard University</div>
+        <h3>HPAIR Harvard Delegate</h3>
+        <p>Harvard Project for Asian and International Relations — one of the world's most selective student leadership and policy conferences. Selected on analytical capability, cross-cultural communication, and structured problem-solving at global scale.</p>
+        <div class="prog-sel">Selected from worldwide candidates · 2025</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY BAIN -->
+<section id="bain" style="background: var(--bg-off);">
+  <div class="section-inner">
+    <div class="section-label">Fit for this role</div>
+    <h2>Why Bain — and why now</h2>
+    <div class="why-grid">
+      <div class="why-body">
+        <p>Bain's approach to primary research is different from most consulting firms. Research at Bain is not a support function for strategy — it is a core input into how teams build conviction about what is actually true for clients. The <strong>AI, Insights & Solutions team's</strong> mandate to evolve primary research through human-AI collaboration reflects a direction I have already been building towards: AI as a tool to extend the researcher's analytical range, not replace the thinking that makes research actionable.</p>
+        <p>The <strong>Middle East geography</strong> is not incidental to my interest — it is central to it. Having researched UAE real estate market dynamics at DAMAC and delivered analytical work for UAE and Saudi clients throughout my career, I understand the GCC context that Bain's ME research mandate operates within. Vision 2030, UAE diversification, the growth of international professional services in the Gulf — these are the market conditions I have been analysing.</p>
+        <p>Bain's <strong>People First</strong> culture and meritocratic ethos are structurally encoded in how teams work and how analysts develop. For a researcher who wants to grow into a genuine analytical expert, that development environment matters as much as the work itself.</p>
+      </div>
+      <div class="why-points">
+        <div class="why-point">
+          <div class="why-arrow">→</div>
+          <div class="why-point-text">
+            <h4>Real estate market research experience</h4>
+            <p>DAMAC project — structured research, consultancy publication synthesis, strategic reporting. The exact analytical environment Bain's ME practice operates within.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-arrow">→</div>
+          <div class="why-point-text">
+            <h4>AI-enabled research capability</h4>
+            <p>Production AI systems at MIT startup + Python automation at Reach Group. Technical depth to push AI-augmented research design, not just use it.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-arrow">→</div>
+          <div class="why-point-text">
+            <h4>US professional standards</h4>
+            <p>MIT-founded startup experience. US engineering culture — rigorous documentation, zero tolerance for imprecision, cross-timezone delivery — applied in a live production environment.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-arrow">→</div>
+          <div class="why-point-text">
+            <h4>GCC regional knowledge</h4>
+            <p>UAE and Saudi market understanding developed through DAMAC research work and enterprise client delivery. Regional context from Day 1, not from an onboarding document.</p>
+          </div>
+        </div>
+        <div class="why-point">
+          <div class="why-arrow">→</div>
+          <div class="why-point-text">
+            <h4>Immediate availability</h4>
+            <p>Dubai-based. UAE Residency Visa. Available to start immediately. No relocation, no visa processing, no delay.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-label">Get in touch</div>
+    <h2>Open for the right conversation</h2>
+    <p class="section-intro" style="margin-bottom:40px;">Dubai-based. Immediate availability. Genuinely interested in the Bain Associate, Primary Research role.</p>
+    <div class="contact-row">
+      <div class="contact-info">
+        <div class="contact-line"><div class="contact-dot"></div> georgevjr03@gmail.com</div>
+        <div class="contact-line"><div class="contact-dot"></div> +971 50 938 2514</div>
+        <div class="contact-line"><div class="contact-dot"></div> Dubai, UAE · UAE Residency Visa</div>
+        <div class="contact-line"><div class="contact-dot"></div> B.Tech CSE · AWS CCP · Azure AZ-900 · McKinsey Forward · Oxford OxML · HPAIR Harvard</div>
+      </div>
+      <div class="contact-cta-group">
+        <a href="mailto:georgevjr03@gmail.com" class="hero-cta">Send an email</a>
+        <a href="tel:+971509382514" class="hero-cta-ghost">Call directly</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-name"><strong>George Varughese Kaimoottil</strong> · Associate, Primary Research</div>
+  <div class="footer-note">Bain & Company · Dubai, UAE · June 2026</div>
+</footer>
+
+</body>
+</html>
